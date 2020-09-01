@@ -1,0 +1,39 @@
+<div class="tn-notification-container">
+    <ng-template ngFor let-group [ngForOf]="model" *ngIf="hasChildren()">
+        <div class="__group-label">{{group.label}}</div>
+
+        <ng-template ngFor let-item [ngForOf]="group.items">
+            <div class="__notification-item" [class.unseen]="item.unseen"
+                 (click)="chuyenTrang(item)">
+                <div class="__icon ci" [ngClass]="{
+                        'ci-chat': +item.type === 1,
+                        'ci-bookmark': +item.type === 2,
+                        'ci-edit': +item.type === 3,
+                        'ci-launch': +item.type === 4,
+                        'ci-notification': +item.type === 5
+                    }"></div>
+
+                <div class="__title">{{item.label}}</div>
+
+                <div class="__time">{{item.time}}</div>
+            </div>
+        </ng-template>
+    </ng-template>
+
+    <ng-template ngFor let-item [ngForOf]="model" *ngIf="!hasChildren()">
+        <div class="__notification-item" [class.unseen]="item.unseen"
+             (click)="chuyenTrang(item)">
+            <div class="__icon ci" [ngClass]="{
+                        'ci-chat': +item.type === 1,
+                        'ci-bookmark': +item.type === 2,
+                        'ci-edit': +item.type === 3,
+                        'ci-launch': +item.type === 4,
+                        'ci-notification': +item.type === 5
+                    }"></div>
+
+            <div class="__title">{{item.label}}</div>
+
+            <div class="__time">{{item.time}}</div>
+        </div>
+    </ng-template>
+</div>

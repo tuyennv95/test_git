@@ -1,0 +1,50 @@
+<form [formGroup]="formGroup">
+    <div class="tn-form-control type-text-field required"
+         [ngClass]="{'error': (formGroup.get('username').errors?.required && submitting)}">
+        <div class="__control-label">Tên đăng nhập</div>
+
+        <div class="__control-input-wrapper">
+            <input class="__control-input" type="text" (focus)="onFocus()" [(ngModel)]="itemDetail.username"
+                   (keyup.enter)="clickLogin()"
+                   formControlName="username" placeholder="Nhập tên đăng nhập">
+        </div>
+
+        <div class="__control-messages">
+            <div class="__message-item">Trường thông tin bắt buộc</div>
+        </div>
+    </div>
+
+    <div class="tn-form-control type-text-field required"
+         [ngClass]="{'error': (formGroup.get('password').errors?.required && submitting) || error}">
+        <div class="__control-label">Mật khẩu</div>
+
+        <div class="__control-input-wrapper">
+            <input class="__control-input" type="password" (focus)="onFocus()" [(ngModel)]="itemDetail.password"
+                   (keyup.enter)="clickLogin()"
+                   formControlName="password" placeholder="Nhập mật khẩu">
+        </div>
+
+        <div class="__control-messages" *ngIf="!error">
+            <div class="__message-item">Trường thông tin bắt buộc</div>
+        </div>
+
+        <div class="__control-messages" *ngIf="error">
+            <div class="__message-item">Thông tin đăng nhập không chính xác</div>
+        </div>
+    </div>
+
+    <div class="__remember-password">
+        <p-checkbox [(ngModel)]="luuDangNhap" formControlName="luuDangNhap"
+                    label="Ghi nhớ đăng nhập"
+                    class="tn-checkbox"></p-checkbox>
+
+        <div class="__forgot-password cursor-pointer">Quên mật khẩu?</div>
+    </div>
+
+    <button type="button" (click)="clickLogin()"
+            class="tn-btn tn-color--white-0 tn-bgc--primary tn-bgc--primary-alt--hover tn-bgc--primary-alt-2--active easing-fast">
+        <span class="__label">Đăng nhập</span>
+        <span class="__icon ci ci-arrow-right"></span>
+    </button>
+
+</form>

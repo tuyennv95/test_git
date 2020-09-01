@@ -1,0 +1,253 @@
+<div class="tn-page-content-area">
+    <div class="tn-page-content-header-area">
+        <div class="__page-title-area">
+            <div class="__left-area">
+                <h1 class="tn-page-title">
+                    Danh sách Môn học
+                </h1>
+            </div>
+
+            <div class="__right-area">
+                <div class="tn-search-box style-1 has-search-adv tn-custom-overlay-panel-wrapper"
+                     (clickOutside)="closeTableFilter()">
+                    <span class="__search-icon ci ci-search"></span>
+
+                    <input class="__input" [(ngModel)]="searchModel.searchText" type="text" (keyup)="onSearchText()"
+                           placeholder="Nhập tìm kiếm Môn học"/>
+
+                    <span class="__search-adv-toggle ci ci-chevron-down-1"
+                          (click)="openSearchAdv = !openSearchAdv"></span>
+
+                    <div class="tn-custom-overlay-panel bottom-left tn-table-filter-dropdown px-24 pt-24 pb-0"
+                         style="width: 470px;" [hidden]="!openSearchAdv">
+                        <div class="ui-g medium-gutter row">
+                            <div class="ui-g-12 mb-24">
+                                <p-dropdown class="tn-dropdown" [options]="type_options"
+                                            [(ngModel)]="searchModel.type"></p-dropdown>
+                            </div>
+                        </div>
+
+                        <div class="ui-g medium-gutter row">
+                            <div class="ui-g-6 mb-24">
+                                <p-dropdown class="tn-dropdown" [options]="department_options"
+                                            [(ngModel)]="searchModel.departmentId"></p-dropdown>
+                            </div>
+                            <div class="ui-g-6 mb-24">
+                                <p-dropdown class="tn-dropdown" [options]="range_options"
+                                            [(ngModel)]="searchModel.rangeId"></p-dropdown>
+                            </div>
+                        </div>
+
+                        <div class="ui-g medium-gutter row">
+                            <div class="ui-g-6 mb-24">
+                                <button type="button" (click)="initDefaultOption()"
+                                        class="tn-btn tn-bgc--transparent tn-bgc--gray-20--hover tn-bgc--gray-30--active
+                                        easing-fast tn-icon-color--red-60 focus-style-1">
+                                    <span class="__label">{{'Hủy tìm kiếm'}}</span>
+                                    <span class="__icon ci ci-delete"></span>
+                                </button>
+                            </div>
+
+                            <div class="ui-g-6 mb-24 text-right">
+                                <button type="button" (click)="onSearch()"
+                                        class="tn-btn tn-bgc--secondary tn-bgc--secondary-alt--hover
+                                        tn-bgc--secondary-alt-2--active easing-fast">
+                                    <span class="__label">{{'Tìm kiếm'}}</span>
+                                    <span class="__icon ci ci-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tn-page-content-body-area">
+        <div class="tn-data-table-area">
+            <div class="__main-content-area">
+                <div class="__table-action-block">
+                    <div class="__left-action-block" id="left-table-actions" style="flex: 1; min-width: 110px">
+                        <button type="button" (click)="modal_update_mon_hoc.showPopup()" *ngIf="+userLogin.role === 1"
+                                class="tn-btn tn-bgc--secondary tn-bgc--secondary-alt--hover tn-bgc--secondary-alt-2--active easing-fast">
+                            <span class="__label">{{'Thêm mới'}}</span>
+                            <span class="__icon ci ci-add"></span>
+                        </button>
+                    </div>
+
+                    <div class="__right-action-block">
+                        <div class="mb-8">{{(page - 1) * limit + 1}} - {{page * limit < total ? page * limit : total}}
+                            của {{total}}</div>
+
+                        <button type="button" [disabled]="page === 1" (click)="onPrevious()"
+                                class="tn-btn icon-only tn-btn icon-only tn-bgc--transparent tn-bgc--gray-20--hover
+                                tn-bgc--gray-30--active easing-fast focus-style-1">
+                            <span class="__icon ci ci-chevron-left-2"></span>
+                        </button>
+
+                        <button type="button" [disabled]="page === maxPage" (click)="onNext()"
+                                class="tn-btn icon-only tn-btn icon-only tn-bgc--transparent tn-bgc--gray-20--hover
+                                 tn-bgc--gray-30--active easing-fast focus-style-1">
+                            <span class="__icon ci ci-chevron-right-1"></span>
+                        </button>
+
+                        <select class="__pagination" [(ngModel)]="limit" (change)="onChangePagination()">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+
+                        <button type="button"
+                                class="tn-btn icon-only tn-bgc--gray-10 tn-bgc--gray-20--hover tn-bgc--gray-30--active
+                                 easing-fast tn-icon-color--primary"
+                                (click)="app.togglePageContentExpansionMode()"
+                                pTooltip="{{app.pageContentExpansionModeActive ? 'Thu nhỏ' : 'Phóng to'}}">
+                            <span class="__icon ci ci-maximize" *ngIf="!app.pageContentExpansionModeActive"></span>
+                            <span class="__icon ci ci-minimize" *ngIf="app.pageContentExpansionModeActive"></span>
+                        </button>
+
+                        <button type="button"
+                                class="tn-btn icon-only tn-bgc--gray-10 tn-bgc--gray-20--hover tn-bgc--gray-30--active
+                                easing-fast tn-icon-color--primary"
+                                (click)="visibleCols.toggle($event)">
+                            <span class="__icon ci ci-data-1"></span>
+                        </button>
+
+                        <p-overlayPanel #visibleCols [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+                                        appendTo="body" styleClass="tn-overlay-panel style-2">
+                            <div class="__title">
+                                <span class="__clear-btn" (click)="resetColsVisibility()">
+                                        {{getVisibleColsNumber()}}
+                                    <span class="__icon ci ci-close"></span>
+                                </span>
+
+                                <span class="__text">
+                                    {{'Cột được lựa chọn'}}
+                                </span>
+                            </div>
+
+                            <div class="__item-wrapper" *ngFor="let col of cols"
+                                 [class.activated]="col.visible">
+                                <div class="__item">
+                                    <p-checkbox class="tn-checkbox primary-theme"
+                                                [(ngModel)]="col.visible" binary="true"
+                                                [label]="col.header"></p-checkbox>
+                                </div>
+                            </div>
+                        </p-overlayPanel>
+                    </div>
+                </div>
+
+                <div class="__record-action-block" [hidden]="selectedItems && !selectedItems.length"
+                     *ngIf="+userLogin.role === 1">
+                    <div class="__left-action-block" style="flex: 1 1 400px">
+                        <div class="ml-16 mb-8 mr-28 __selected-record-number">
+                            {{selectedItems.length}} bản ghi được chọn
+                        </div>
+
+                        <button type="button" (click)="this.showEdit()"
+                                class="tn-btn icon-only __record-action-btn" [hidden]="isMultiEdit">
+                            <span class="__icon ci ci-edit"></span>
+                        </button>
+
+                        <button type="button" (click)="deleteItem()"
+                                class="tn-btn icon-only __record-action-btn">
+                            <span class="__icon ci ci-delete"></span>
+                        </button>
+                    </div>
+
+                    <div class="__right-action-block">
+                        <button type="button" class="tn-btn icon-only __record-action-btn mr-8"
+                                (click)="resetBulkSelect()">
+                            <span class="__icon ci ci-close"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tn-table-wrapper scroll-panel-wrapper">
+                    <p-scrollPanel [style]="{width: '100%', height: '100%'}">
+                        <p-table [columns]="cols" [value]="dataSource" class="tn-table" [rows]="limit"
+                                 [totalRecords]="total" [customSort]="true" (onSort)="onSort($event)"
+                                 [style]="{'min-width': '1000px', 'overflow-x': 'auto'}"
+                                 (onPage)="onPage($event)" [loading]="isLoading" [lazy]="true">
+                            <ng-template pTemplate="colgroup">
+                                <colgroup>
+                                    <col *ngIf="+userLogin.role === 1" style="width: 50px">
+                                    <col style="width: 50px">
+
+                                    <ng-container *ngFor="let col of cols">
+                                        <col [style.width]="col.width ? col.width : 'auto'" [hidden]="!col.visible">
+                                    </ng-container>
+                                </colgroup>
+                            </ng-template>
+
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngIf="+userLogin.role === 1">
+                                        <p-triStateCheckbox class="tn-checkbox primary-theme" [(ngModel)]="isCheckAll"
+                                                            (onChange)="onChangeBulkSelection()"></p-triStateCheckbox>
+                                    </th>
+
+                                    <th style="width: 50px;">STT</th>
+
+                                    <ng-container *ngFor="let col of columns">
+                                        <th *ngIf="col.sort" [pSortableColumn]="col.field" [hidden]="!col.visible">
+                                            <div class="flex-el space-between">
+                                                <div class="overflow-break-word">{{col.header}}</div>
+
+                                                <p-sortIcon [field]="col.field"></p-sortIcon>
+                                            </div>
+                                        </th>
+
+                                        <th *ngIf="!col.sort" [hidden]="!col.visible">
+                                            <div class="overflow-break-word">{{col.header}}</div>
+                                        </th>
+                                    </ng-container>
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                                <tr class="tn-row-status"
+                                    [class.tn-row-status-danger]="rowData.status === 1"
+                                    [class.tn-row-status-warning]="rowData.status === 2"
+                                    [class.tn-row-status-success]="rowData.status === 3 || !rowData.status">
+                                    <td *ngIf="+userLogin.role === 1">
+                                        <p-checkbox class="tn-checkbox primary-theme" name="group" [value]="rowData"
+                                                    (onChange)="checkSelectionState()"
+                                                    [(ngModel)]="selectedItems"></p-checkbox>
+                                    </td>
+
+                                    <td>{{(rowIndex + 1) + (page - 1) * 10}}</td>
+
+                                    <td *ngFor="let col of columns" [hidden]="!col.visible">
+                                        <ng-template [ngIf]="col.field !== 'type' && col.field !== 'lecturerList'
+                                            && col.field !== 'rangeIds'">
+                                            {{rowData[col.field]}}
+                                        </ng-template>
+
+                                        <ng-template [ngIf]="col.field === 'lecturerList'">
+                                            <p *ngFor="let item of rowData[col.field]">
+                                                {{item.title}}. {{item.firstName}} {{item.lastName}}
+                                            </p>
+                                        </ng-template>
+
+                                        <ng-template [ngIf]="col.field === 'type'">
+                                            {{globals.LOAI_MON_HOC[rowData[col.field]]}}
+                                        </ng-template>
+
+                                        <ng-template [ngIf]="col.field === 'rangeIds'">
+                                            {{getRanges(rowData[col.field])}}
+                                        </ng-template>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </p-scrollPanel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<modal-update-mon-hoc (closePopup)="closePopup($event)"></modal-update-mon-hoc>

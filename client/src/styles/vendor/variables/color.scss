@@ -1,0 +1,275 @@
+// Carbon color
+
+$carbon--black-100: #000000 !default;
+$carbon--blue-10: #edf4ff !default;
+$carbon--blue-20: #c9deff !default;
+$carbon--blue-30: #97c1ff !default;
+$carbon--blue-40: #6ea6ff !default;
+$carbon--blue-50: #408bfc !default;
+$carbon--blue-60: #0062ff !default;
+$carbon--blue-70: #054ada !default;
+$carbon--blue-80: #0530ad !default;
+$carbon--blue-90: #061f80 !default;
+$carbon--blue-100: #051243 !default;
+$carbon--cool-gray-10: #f2f4f8 !default;
+$carbon--cool-gray-20: #d5d9e0 !default;
+$carbon--cool-gray-30: #b9bfc7 !default;
+$carbon--cool-gray-40: #9fa5ad !default;
+$carbon--cool-gray-50: #868d95 !default;
+$carbon--cool-gray-60: #697077 !default;
+$carbon--cool-gray-70: #50565b !default;
+$carbon--cool-gray-80: #373d42 !default;
+$carbon--cool-gray-90: #242a2e !default;
+$carbon--cool-gray-100: #13171a !default;
+$carbon--cyan-10: #e3f6ff !default;
+$carbon--cyan-20: #b3e6ff !default;
+$carbon--cyan-30: #6ccaff !default;
+$carbon--cyan-40: #30b0ff !default;
+$carbon--cyan-50: #1191e6 !default;
+$carbon--cyan-60: #0072c3 !default;
+$carbon--cyan-70: #0058a1 !default;
+$carbon--cyan-80: #003d73 !default;
+$carbon--cyan-90: #002b50 !default;
+$carbon--cyan-100: #07192b !default;
+$carbon--gray-10: #f3f3f3 !default;
+$carbon--gray-20: #dcdcdc !default;
+$carbon--gray-30: #bebebe !default;
+$carbon--gray-40: #a4a4a4 !default;
+$carbon--gray-50: #8c8c8c !default;
+$carbon--gray-60: #6f6f6f !default;
+$carbon--gray-70: #565656 !default;
+$carbon--gray-80: #3d3d3d !default;
+$carbon--gray-90: #282828 !default;
+$carbon--gray-100: #171717 !default;
+$carbon--green-10: #dafbe4 !default;
+$carbon--green-20: #9deeb2 !default;
+$carbon--green-30: #56d679 !default;
+$carbon--green-40: #3dbb61 !default;
+$carbon--green-50: #24a148 !default;
+$carbon--green-60: #198038 !default;
+$carbon--green-70: #10642a !default;
+$carbon--green-80: #054719 !default;
+$carbon--green-90: #01330f !default;
+$carbon--green-100: #081b09 !default;
+$carbon--magenta-10: #fff0f6 !default;
+$carbon--magenta-20: #ffcfe1 !default;
+$carbon--magenta-30: #ffa0c2 !default;
+$carbon--magenta-40: #fa75a6 !default;
+$carbon--magenta-50: #ee538b !default;
+$carbon--magenta-60: #d12765 !default;
+$carbon--magenta-70: #a11950 !default;
+$carbon--magenta-80: #760a3a !default;
+$carbon--magenta-90: #57002b !default;
+$carbon--magenta-100: #2a0a16 !default;
+$carbon--orange-40: #fc7b1e !default;
+$carbon--purple-10: #f7f1ff !default;
+$carbon--purple-20: #e6d6ff !default;
+$carbon--purple-30: #d0b0ff !default;
+$carbon--purple-40: #bb8eff !default;
+$carbon--purple-50: #a66efa !default;
+$carbon--purple-60: #8a3ffc !default;
+$carbon--purple-70: #6e32c9 !default;
+$carbon--purple-80: #4f2196 !default;
+$carbon--purple-90: #38146b !default;
+$carbon--purple-100: #1e1033 !default;
+$carbon--red-10: #fff0f1 !default;
+$carbon--red-20: #fcd0d3 !default;
+$carbon--red-30: #ffa4a9 !default;
+$carbon--red-40: #ff767c !default;
+$carbon--red-50: #fb4b53 !default;
+$carbon--red-60: #da1e28 !default;
+$carbon--red-70: #a51920 !default;
+$carbon--red-80: #750e13 !default;
+$carbon--red-90: #570408 !default;
+$carbon--red-100: #2c080a !default;
+$carbon--teal-10: #dbfbfb !default;
+$carbon--teal-20: #92eeee !default;
+$carbon--teal-30: #20d5d2 !default;
+$carbon--teal-40: #00bab6 !default;
+$carbon--teal-50: #009c98 !default;
+$carbon--teal-60: #007d79 !default;
+$carbon--teal-70: #006161 !default;
+$carbon--teal-80: #004548 !default;
+$carbon--teal-90: #003137 !default;
+$carbon--teal-100: #081a1c !default;
+$carbon--warm-gray-10: #f7f3f1 !default;
+$carbon--warm-gray-20: #e0dbda !default;
+$carbon--warm-gray-30: #c1bcbb !default;
+$carbon--warm-gray-40: #a7a2a2 !default;
+$carbon--warm-gray-50: #8f8b8b !default;
+$carbon--warm-gray-60: #726e6e !default;
+$carbon--warm-gray-70: #595555 !default;
+$carbon--warm-gray-80: #403c3c !default;
+$carbon--warm-gray-90: #2b2828 !default;
+$carbon--warm-gray-100: #1a1717 !default;
+$carbon--white-0: #ffffff !default;
+$carbon--yellow-20: #fdd13a !default;
+$carbon--colors: (
+    'black': (
+        100: #000000,
+    ),
+    'blue': (
+        10: #edf4ff,
+        20: #c9deff,
+        30: #97c1ff,
+        40: #6ea6ff,
+        50: #408bfc,
+        60: #0062ff,
+        70: #054ada,
+        80: #0530ad,
+        90: #061f80,
+        100: #051243,
+    ),
+    'cool-gray': (
+        10: #f2f4f8,
+        20: #d5d9e0,
+        30: #b9bfc7,
+        40: #9fa5ad,
+        50: #868d95,
+        60: #697077,
+        70: #50565b,
+        80: #373d42,
+        90: #242a2e,
+        100: #13171a,
+    ),
+    'cyan': (
+        10: #e3f6ff,
+        20: #b3e6ff,
+        30: #6ccaff,
+        40: #30b0ff,
+        50: #1191e6,
+        60: #0072c3,
+        70: #0058a1,
+        80: #003d73,
+        90: #002b50,
+        100: #07192b,
+    ),
+    'gray': (
+        10: #f3f3f3,
+        20: #dcdcdc,
+        30: #bebebe,
+        40: #a4a4a4,
+        50: #8c8c8c,
+        60: #6f6f6f,
+        70: #565656,
+        80: #3d3d3d,
+        90: #282828,
+        100: #171717,
+    ),
+    'green': (
+        10: #dafbe4,
+        20: #9deeb2,
+        30: #56d679,
+        40: #3dbb61,
+        50: #24a148,
+        60: #198038,
+        70: #10642a,
+        80: #054719,
+        90: #01330f,
+        100: #081b09,
+    ),
+    'magenta': (
+        10: #fff0f6,
+        20: #ffcfe1,
+        30: #ffa0c2,
+        40: #fa75a6,
+        50: #ee538b,
+        60: #d12765,
+        70: #a11950,
+        80: #760a3a,
+        90: #57002b,
+        100: #2a0a16,
+    ),
+    'orange': (
+        40: #fc7b1e,
+    ),
+    'purple': (
+        10: #f7f1ff,
+        20: #e6d6ff,
+        30: #d0b0ff,
+        40: #bb8eff,
+        50: #a66efa,
+        60: #8a3ffc,
+        70: #6e32c9,
+        80: #4f2196,
+        90: #38146b,
+        100: #1e1033,
+    ),
+    'red': (
+        10: #fff0f1,
+        20: #fcd0d3,
+        30: #ffa4a9,
+        40: #ff767c,
+        50: #fb4b53,
+        60: #da1e28,
+        70: #a51920,
+        80: #750e13,
+        90: #570408,
+        100: #2c080a,
+    ),
+    'teal': (
+        10: #dbfbfb,
+        20: #92eeee,
+        30: #20d5d2,
+        40: #00bab6,
+        50: #009c98,
+        60: #007d79,
+        70: #006161,
+        80: #004548,
+        90: #003137,
+        100: #081a1c,
+    ),
+    'warm-gray': (
+        10: #f7f3f1,
+        20: #e0dbda,
+        30: #c1bcbb,
+        40: #a7a2a2,
+        50: #8f8b8b,
+        60: #726e6e,
+        70: #595555,
+        80: #403c3c,
+        90: #2b2828,
+        100: #1a1717,
+    ),
+    'white': (
+        0: #ffffff,
+    ),
+    'yellow': (
+        20: #fdd13a,
+    ),
+) !default;
+
+$carbon--hover-ui: #e5e5e5;
+$carbon--active-ui: #bebebe;
+$carbon--selected-ui: #dcdcdc;
+$carbon--hover-selected-ui: #cacaca;
+$carbon--disabled-1: #f3f3f3;
+$carbon--disabled-2: #bebebe;
+$carbon--disabled-3: #8c8c8c;
+
+// tn color
+
+$tn-color--primary: #2b1a5f;
+$tn-color--primary-alt: #190a43;
+$tn-color--secondary: #facb01;
+$tn-color--text-common: $carbon--gray-70;
+$tn-color--text-1: $carbon--gray-100;
+$tn-color--text-2: $carbon--gray-90;
+$tn-color--text-3: $carbon--gray-80;
+$tn-color--text-4: $carbon--gray-70;
+
+// tn color mapping
+
+$tn--color-mapping: (
+    transparent: transparent,
+    primary: $tn-color--primary,
+    'primary-alt': $tn-color--primary-alt,
+    secondary: $tn-color--secondary,
+    secondary-alt: #fab902,
+    secondary-alt-2: #fa8002,
+    text-common: $tn-color--text-common,
+    text-1: $tn-color--text-1,
+    text-2: $tn-color--text-2,
+    text-3: $tn-color--text-3,
+    hover-ui: $carbon--hover-ui,
+);

@@ -1,0 +1,24 @@
+@each $name, $color in $tn--color-mapping {
+    .tn-color--#{$name},
+    .tn-color--#{$name}--hover:not(.activated):hover,
+    .tn-color--#{$name}--active:not(.activated):active,
+    .tn-color--#{$name}--activated.activated {
+        color: $color;
+    }
+
+    .tn-bgc--#{$name},
+    .tn-bgc--#{$name}--hover:not(.activated):hover,
+    .tn-bgc--#{$name}--active:not(.activated):active,
+    .tn-bgc--#{$name}--activated.activated {
+        background-color: $color;
+    }
+
+    .tn-icon-color--#{$name},
+    .tn-icon-color--#{$name}--hover:not(.activated):hover,
+    .tn-icon-color--#{$name}--active:not(.activated):active,
+    .tn-icon-color--#{$name}--activated.activated {
+        .__icon {
+            color: $color;
+        }
+    }
+}

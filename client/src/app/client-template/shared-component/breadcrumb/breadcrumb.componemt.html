@@ -1,0 +1,50 @@
+<nav #nav class="bx--breadcrumb"
+     [ngClass]="{'bx--skeleton' : skeleton, 'bx--breadcrumb--no-trailing-slash' : noTrailingSlash}"
+     [attr.aria-label]="ariaLabel">
+    <ng-template [ngIf]="shouldShowContent">
+        <ng-content></ng-content>
+    </ng-template>
+
+    <ng-template [ngIf]="!shouldShowOverflow">
+        <ng-container
+            *ngFor="let item of items">
+            <a href="{{item.href}}">
+                {{item.label}}
+            </a>
+        </ng-container>
+    </ng-template>
+
+    <ng-template [ngIf]="shouldShowOverflow">
+        <div class="bx--breadcrumb-item">
+            <a class="bx--link" href="{{first?.href}}">
+                {{first?.label}}
+            </a>
+        </div>
+
+        <div class="bx--breadcrumb-item">
+            <a class="bx--link" href="javascript:void(0)" (click)="op_breadcrumb.toggle($event)">...</a>
+
+            <p-overlayPanel #op_breadcrumb appendTo="body" styleClass="tn-breadcrumb-dropdown tn-overlay-panel style-1"
+                            [showTransitionOptions]="'0ms'"
+                            [hideTransitionOptions]="'0ms'">
+                <div class="__item" *ngFor="let item of overflowItems">
+                    <a class="bx--link" href="{{item?.href}}" style="text-decoration: none;">
+                        {{item?.label}}
+                    </a>
+                </div>
+            </p-overlayPanel>
+        </div>
+
+        <div class="bx--breadcrumb-item">
+            <a class="bx--link" href="{{secondLast?.href}}">
+                {{secondLast?.label}}
+            </a>
+        </div>
+
+        <div class="bx--breadcrumb-item">
+            <a class="bx--link" href="{{last?.href}}">
+                {{last?.label}}
+            </a>
+        </div>
+    </ng-template>
+</nav>

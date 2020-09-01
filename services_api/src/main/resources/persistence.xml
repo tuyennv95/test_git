@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/registration</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <mapping class="com.tudinh.kltn.entity.User"/>
+        <mapping class="com.tudinh.kltn.entity.Student"/>
+        <mapping class="com.tudinh.kltn.entity.Lecturer"/>
+        <mapping class="com.tudinh.kltn.entity.Department"/>
+        <mapping class="com.tudinh.kltn.entity.Subject"/>
+        <mapping class="com.tudinh.kltn.entity.Range"/>
+        <mapping class="com.tudinh.kltn.entity.LecturerSubject"/>
+        <mapping class="com.tudinh.kltn.entity.Document"/>
+        <mapping class="com.tudinh.kltn.entity.FileManager"/>
+        <mapping class="com.tudinh.kltn.entity.Comment"/>
+        <mapping class="com.tudinh.kltn.entity.DocumentReview"/>
+        <mapping class="com.tudinh.kltn.entity.DocumentRequest"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

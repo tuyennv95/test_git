@@ -1,0 +1,143 @@
+// hidden
+.hidden, [hidden] {
+    display: none !important;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+@media only screen and (min-width: 1025px) {
+    .hidden-on-desktop {
+        display: none;
+    }
+
+    .hidden-on-desktop-i {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .hidden-on-small-device {
+        display: none;
+    }
+
+    .hidden-on-small-device-i {
+        display: none !important;
+    }
+}
+
+// display
+.block-el {
+    display: block;
+}
+
+.inline-block-el {
+    display: inline-block;
+}
+
+.flex-el {
+    @include flexbox();
+
+    &.align-content-top {
+        @include align-items(flex-start);
+    }
+
+    &.align-content-middle {
+        @include align-items(center);
+    }
+
+    &.align-content-bottom {
+        @include align-items(flex-end);
+    }
+
+    &.align-content-center {
+        @include justify-content(center);
+    }
+
+    &.align-content-left {
+        @include justify-content(flex-start);
+    }
+
+    &.align-content-right {
+        @include justify-content(flex-end);
+    }
+
+    &.space-between {
+        @include justify-content(space-between);
+    }
+
+    &.wrap-content {
+        @include flex-wrap(wrap);
+    }
+
+    &.x-direction {
+        @include flex-direction(row);
+    }
+
+    &.x-reverse-direction {
+        @include flex-direction(row-reverse);
+    }
+
+    &.y-direction {
+        @include flex-direction(column);
+    }
+
+    &.y-reverse-direction {
+        @include flex-direction(column-reverse);
+    }
+}
+
+.block-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Cursor
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+// overflow
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
+// vertical align
+
+.vertical-align-top, th.align-top, td.align-top {
+    vertical-align: top;
+}
+
+.vertical-align-middle, th.align-middle, td.align-middle {
+    vertical-align: middle;
+}
+
+.vertical-align-bottom, th.align-bottom, td.align-bottom {
+    vertical-align: bottom;
+}

@@ -1,0 +1,19 @@
+<div class="tn-main-menu-search-box">
+    <div class="__search-box-wrapper">
+        <div class="__search-icon ci ci-search"></div>
+
+        <p-autoComplete [(ngModel)]="menuSearchInput" [suggestions]="menuSearchResult"
+                        (completeMethod)="onMenuSearch($event)" [autoHighlight]="true"
+                        [placeholder]="'Tìm kiếm chức năng'" [delay]="200"
+                        [scrollHeight]="'400px'"
+                        class="__search-input"
+                        [readonly]="!(app.appMenuModel && app.appMenuModel.length)"
+                        (onSelect)="onSelectMenuSuggestion($event)"
+                        (onBlur)="onBlurMenuSearchInput($event)"
+                        (onFocus)="onFocusMenuSearchInput($event)" field="label">
+            <ng-template let-item pTemplate="item">
+                <div innerHTML="{{ item.label}}"></div>
+            </ng-template>
+        </p-autoComplete>
+    </div>
+</div>

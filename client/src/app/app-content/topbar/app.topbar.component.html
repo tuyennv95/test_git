@@ -1,0 +1,112 @@
+<div class="tn-app-topbar">
+    <div class="__topbar-content-container">
+        <div class="__topbar-left-content">
+            <div class="__topbar-item">
+                <div class="__topbar-action-btn __menu-collapse-toggle activated"
+                     (click)="app.onMenuCollapseToggleClick()">
+                    <span class="__icon state-active ci ci-close"></span>
+
+                    <span class="__icon state-inactive ci ci-app-switcher"></span>
+                </div>
+            </div>
+
+            <a [routerLink]="['/']" class="__topbar-item __logo-wrapper">
+                <img src="./../../../assets/layout/images/logo160x160.png" class="__logo"/>
+            </a>
+
+            <div class="__topbar-item __information">
+                <div class="__subsystem-name">
+                    Hệ thống <span class="fw-bold">Chia sẻ tài liệu</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="__topbar-right-content">
+            <div class="__topbar-item tn-custom-overlay-panel-wrapper"
+                 (clickOutside)="closeUserSettingDropdown($event)">
+                <div class="__topbar-action-btn" (click)="toggleUserSettingDropdown()"
+                     [class.activated]="showDropdown.userSetting">
+                    <span class="__icon ci ci-user-avatar"></span>
+                </div>
+
+                <div class="tn-custom-overlay-panel bottom-left __user-setting-container"
+                     [hidden]="!showDropdown.userSetting">
+                    <div class="__user-info-wrapper">
+                        <div class="__user-info">
+                            <img class="__avatar" src="" alt="avatar"/>
+
+                            <div class="__name">{{fullName}}</div>
+
+                            <div class="__role">{{position}}</div>
+                        </div>
+                    </div>
+
+                    <div class="__action-menu-container">
+                        <a href="javascript:void(0);" class="__action-menu-item">
+                            <i class="__icon ci ci-user-admin"></i>
+                            <span class="__title">Thông tin cá nhấn</span>
+                        </a>
+
+                        <a routerLink="/doi-password"
+                           href="javascript:void(0);" class="__action-menu-item">
+                            <i class="__icon ci ci-fingerprint-recognition"></i>
+                            <span class="__title">Thay đổi mật khẩu</span>
+                        </a>
+
+                        <!--                        <a href="javascript:void(0);" class="__action-menu-item">-->
+                        <!--                            <i class="__icon ci ci-notification"></i>-->
+                        <!--                            <span class="__title">Thiết lập thông báo</span>-->
+                        <!--                        </a>-->
+
+                        <a href="javascript:void(0);" class="__action-menu-item"
+                           (click)="app.onTopbarLogout()">
+                            <i class="__icon ci ci-power"></i>
+                            <span class="__title">Đăng xuất</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="__topbar-item" (clickOutside)="closeRightSidebar($event)">
+                <div class="__topbar-action-btn highlight" (click)="toggleRightSidebar()">
+                    <span class="__icon ci ci-event-schedule"></span>
+                </div>
+
+                <ng-container *ngTemplateOutlet="rightSideBar"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #rightSideBar>
+    <div class="tn-right-sidebar-area" [ngClass]="{
+                    'show': showDropdown.rightSidebar,
+                    'hide': !showDropdown.rightSidebar
+                    }">
+
+        <div class="__sidebar-tabs-container">
+            <div class="__tab-item" [class.activated]="currentSidebarTab === SidebarTabs.NOTIFICATION"
+                 (click)="currentSidebarTab = SidebarTabs.NOTIFICATION">
+                Thông báo
+            </div>
+
+            <!--            <div class="__tab-item" [class.activated]="currentSidebarTab === SidebarTabs.ACTIVITY"-->
+            <!--                 (click)="currentSidebarTab = SidebarTabs.ACTIVITY">-->
+            <!--                Hoạt động-->
+            <!--            </div>-->
+        </div>
+
+        <div class="__sidebar-panel-container">
+            <div class="__notification-panel" [hidden]="currentSidebarTab !== SidebarTabs.NOTIFICATION">
+                <app-notification></app-notification>
+            </div>
+
+            <div class="__activity-panel" [hidden]="currentSidebarTab !== SidebarTabs.ACTIVITY">
+                <div class="py-8 px-16">
+                    Danh sách hoạt động
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

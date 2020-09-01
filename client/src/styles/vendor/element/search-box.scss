@@ -1,0 +1,60 @@
+.tn-search-box.style-1 {
+    position: relative;
+
+    .__input {
+        padding: 0 16px 0 32px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid $carbon--gray-50;
+        height: 32px;
+        background-color: $carbon--gray-10;
+
+        &::placeholder {
+            color: $carbon--gray-50;
+        }
+
+        //&:focus {
+        //    outline: 2px solid $carbon--blue-60;
+        //    outline-offset: -2px;
+        //}
+    }
+
+    .__search-icon,
+    .__search-adv-toggle {
+        right: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 100%;
+        top: 0;
+        font-size: 16px;
+    }
+
+    .__search-icon {
+        left: 0;
+        pointer-events: none;
+    }
+
+    .__search-adv-toggle {
+        right: 0;
+        cursor: pointer;
+        @include easing-animation-fast(background-color);
+
+        &:hover {
+            background-color: $carbon--hover-ui;
+        }
+
+        &:active {
+            background-color: $carbon--active-ui;
+        }
+    }
+
+    &.has-search-adv {
+        .__input {
+            padding-right: 32px;
+        }
+    }
+}
+

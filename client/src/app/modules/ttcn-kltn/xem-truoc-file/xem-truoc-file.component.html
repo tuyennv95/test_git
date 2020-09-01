@@ -1,0 +1,29 @@
+<p-dialog #dialog [header]="title" class="tn-modal" [(visible)]="isShow"
+          [modal]="true" [responsive]="true" [styleClass]="'tn-modal force-full-width'"
+          [style]="{'max-width': '1300px'}" [minHeight]="400"
+          closeIcon="ci ci-close" maximizeIcon="ci ci-maximize" minimizeIcon="ci ci-minimize"
+          [maximizable]="true" [contentStyle]="{'max-height': getMaxDialogHeight()}" [autoZIndex]="true">
+
+    <div class="tn-modal-content-panel tn-form-container">
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-g-12 ui-lg-12">
+                <ngx-doc-viewer [url]="doc" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
+            </div>
+        </div>
+    </div>
+
+    <p-footer>
+        <div class="ui-g large-gutter row tn-modal-footer-content">
+            <div class="ui-g-8 __left-content">
+            </div>
+
+            <div class="ui-g-4 __right-content">
+                <button type="button" (click)="cancel()"
+                        class="tn-btn tn-color--white-0 tn-bgc--primary tn-bgc--primary-alt--hover
+                        tn-bgc--primary-alt-2--active easing-fast">
+                    <span class="__label">Thoát</span>
+                </button>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>

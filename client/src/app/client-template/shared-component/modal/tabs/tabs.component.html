@@ -1,0 +1,178 @@
+<p-dialog #dialog [header]="'Thêm mới đợt nhập học'" class="tn-modal modal-with-tabs" [(visible)]="isShow"
+          [modal]="true" [responsive]="true" maximizeIcon="ci ci-maximize"
+          [styleClass]="'tn-modal force-full-width'" [style]="{'max-width': '1300px'}" [minHeight]="218"
+          [maximizable]="true" [contentStyle]="{'max-height': getMaxDialogHeight()}" [resizable]="false"
+          [autoZIndex]="true" minimizeIcon="ci ci-minimize">
+
+    <p-tabView class="tn-modal-tabs" (onChange)="handleTabChange($event)">
+        <p-tabPanel header="Danh sách CTĐT">
+            <ng-template pTemplate="content">
+                <div class="tn-data-table-area tn-modal-tab-panel-content">
+                    <div class="__main-content-area">
+                        <div class="__table-action-block ui-g pt-24">
+                            <div class="__left-action-block pb-8" style="flex: 1 1 300px">
+                                <button type="button" (click)="onAdd()"
+                                        class="tn-btn tn-bgc--secondary tn-bgc--secondary-alt--hover
+                                tn-bgc--secondary-alt-2--active easing-fast">
+                                    <span class="__label">{{'Thêm mới'}}</span>
+                                    <span class="__icon ci ci-add"></span>
+                                </button>
+
+                                <button type="button"
+                                        class="tn-btn tn-bgc--transparent tn-bgc--gray-20--hover tn-bgc--gray-30--active
+                                easing-fast tn-icon-color--green-60 focus-style-1">
+                                    <span class="__label">{{'Xuất danh sách'}}</span>
+                                    <span class="__icon ci ci-download"></span>
+                                </button>
+                            </div>
+
+                            <div class="__left-action-block pb-8">
+                                <div class="tn-search-box style-1 has-search-adv tn-custom-overlay-panel-wrapper mb-8">
+                                    <span class="__search-icon ci ci-search"></span>
+
+                                    <input class="__input" type="text" placeholder="Nhập từ khóa tìm kiếm"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="__record-action-block" [hidden]="selectedItems && !selectedItems.length">
+                            <div class="__left-action-block" style="flex: 1 1 400px">
+                                <div class="ml-16 mb-8 mr-28 __selected-record-number">
+                                    {{selectedItems.length}} bản ghi được chọn
+                                </div>
+
+                                <button type="button" class="tn-btn icon-only __record-action-btn">
+                                    <span class="__icon ci ci-download"></span>
+                                </button>
+
+                                <button type="button" class="tn-btn icon-only __record-action-btn">
+                                    <span class="__icon ci ci-printer"></span>
+                                </button>
+
+                                <button type="button"
+                                        class="tn-btn icon-only __record-action-btn"
+                                        [hidden]="isMultiEdit">
+                                    <span class="__icon ci ci-edit"></span>
+                                </button>
+
+                                <button type="button" class="tn-btn icon-only __record-action-btn"
+                                        [hidden]="isMultiEdit">
+                                    <span class="__icon ci ci-copy"></span>
+                                </button>
+
+                                <button type="button" class="tn-btn icon-only __record-action-btn"
+                                        [hidden]="isMultiEdit">
+                                    <span class="__icon ci ci-delete"></span>
+                                </button>
+
+                                <button type="button" class="tn-btn icon-only __record-action-btn">
+                                    <span class="__icon ci ci-overflow-menu-vertical-1"></span>
+                                </button>
+                            </div>
+
+                            <div class="__right-action-block">
+                                <button type="button" class="tn-btn icon-only __record-action-btn mr-8"
+                                        (click)="resetBulkSelect()">
+                                    <span class="__icon ci ci-close"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tn-table-wrapper" style="height: 500px">
+                            <p-table [columns]="cols" [value]="dataSource" class="tn-table" [rows]="limit"
+                                     [totalRecords]="total" [customSort]="true" (onSort)="onSort($event)"
+                                     [style]="{'min-width': '1000px'}"
+                                     (onPage)="onPage($event)" [loading]="isLoading" [lazy]="true"
+                                     scrollHeight="auto">
+                                <ng-template pTemplate="colgroup">
+                                    <colgroup>
+                                        <col style="width: 50px">
+
+                                        <ng-container *ngFor="let col of cols">
+                                            <col [style.width]="col.width ? col.width : 'auto'" [hidden]="!col.visible">
+                                        </ng-container>
+                                    </colgroup>
+                                </ng-template>
+
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th>
+                                            <p-triStateCheckbox class="tn-checkbox primary-theme"
+                                                                [(ngModel)]="isCheckAll"
+                                                                (onChange)="onChangeBulkSelection()"></p-triStateCheckbox>
+                                        </th>
+
+                                        <ng-container *ngFor="let col of columns">
+                                            <th *ngIf="col.sort" [pSortableColumn]="col.field" [hidden]="!col.visible">
+                                                <div class="flex-el space-between">
+                                                    <div class="overflow-break-word">{{col.header}}</div>
+
+                                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                                </div>
+                                            </th>
+
+                                            <th *ngIf="!col.sort" [hidden]="!col.visible">
+                                                <div class="overflow-break-word">{{col.header}}</div>
+                                            </th>
+                                        </ng-container>
+
+                                    </tr>
+                                </ng-template>
+
+                                <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                                    <tr [class.tn-row-status]="rowData.status"
+                                        [class.tn-row-status-danger]="rowData.status === 1"
+                                        [class.tn-row-status-warning]="rowData.status === 2"
+                                        [class.tn-row-status-success]="rowData.status === 3">
+                                        <td>
+                                            <p-checkbox class="tn-checkbox primary-theme" name="group" [value]="rowData"
+                                                        (onChange)="checkSelectionState()"
+                                                        [(ngModel)]="selectedItems"></p-checkbox>
+                                        </td>
+
+                                        <td *ngFor="let col of columns" [hidden]="!col.visible">
+                                            {{rowData[col.field]}}
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-tabPanel>
+
+        <p-tabPanel header="Thông tin HP thay thế">
+            <div class="tn-modal-tab-panel-content px-32 py-16">
+                Thông tin HP thay thế
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+
+    <p-footer>
+        <div class="ui-g large-gutter row tn-modal-footer-content">
+            <div class="ui-g-8 __left-content">
+
+                <button type="button"
+                        class="tn-btn tn-bgc--transparent tn-bgc--gray-20--hover tn-bgc--gray-30--active easing-fast focus-style-1 tn-icon-color--red-60">
+                    <span class="__label">{{'Xóa dữ liệu'}}</span>
+                    <span class="__icon ci ci-delete"></span>
+                </button>
+
+                <button type="button"
+                        class="tn-btn tn-bgc--transparent tn-bgc--gray-20--hover tn-bgc--gray-30--active easing-fast focus-style-1 tn-icon-color--blue-70">
+                    <span class="__label">{{'Sao chép'}}</span>
+                    <span class="__icon ci ci-copy"></span>
+                </button>
+            </div>
+
+            <div class="ui-g-4 __right-content">
+                <button type="button"
+                        class="tn-btn tn-color--white-0 tn-bgc--primary tn-bgc--primary-alt--hover tn-bgc--primary-alt-2--active easing-fast">
+                    <span class="__label">{{'Lưu dữ liệu'}}</span>
+                    <span class="__icon ci ci-save"></span>
+                </button>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>

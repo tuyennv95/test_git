@@ -1,0 +1,317 @@
+<div class="tn-page-content-area">
+    <div class="tn-page-content-body-area tn-form-container" style="overflow: auto">
+        <h3>Text field</h3>
+
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-g-12 ui-lg-4">
+                <div class="tn-form-control type-text-field">
+                    <div class="__control-label">Text Input label</div>
+
+                    <div class="__control-input-wrapper">
+                        <input class="__control-input" type="text" placeholder="Placeholder text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-lg-4">
+                <div class="tn-form-control type-text-field required error">
+                    <div class="__control-label">Text Input label</div>
+
+                    <div class="__control-input-wrapper">
+                        <input class="__control-input" type="text" placeholder="Placeholder text">
+                    </div>
+
+                    <div class="__control-messages">
+                        <div class="__message-item">Validation message here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-lg-4">
+                <div class="tn-form-control type-text-field disabled">
+                    <div class="__control-label">Text Input label</div>
+
+                    <div class="__control-input-wrapper">
+                        <input class="__control-input" type="text" placeholder="Placeholder text" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Number input</h3>
+
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-number">
+                    <div class="__control-label">Number input label</div>
+
+                    <div class="__control-input-wrapper">
+                        <tn-number-input class="__control-input" [(ngModel)]="number.input1"
+                                         [min]="0" [max]="1000"></tn-number-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-number required error">
+                    <div class="__control-label">Text Input label</div>
+
+                    <div class="__control-input-wrapper">
+                        <tn-number-input class="__control-input" [(ngModel)]="number.input2"
+                                         [min]="0" [max]="1000"></tn-number-input>
+                    </div>
+
+                    <div class="__control-messages">
+                        <div class="__message-item">Invalid number</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-number disabled">
+                    <div class="__control-label">Text Input label</div>
+
+                    <div class="__control-input-wrapper">
+                        <tn-number-input class="__control-input" [(ngModel)]="number.input3"
+                                         [min]="0" [max]="1000" [disabled]="true"></tn-number-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Textarea</h3>
+
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-g-12">
+                <div class="tn-form-control type-textarea required">
+                    <div class="__control-label">Text Area label</div>
+
+                    <div class="__control-input-wrapper">
+                        <textarea class="__control-input" [placeholder]="'Placeholder text'" [rows]="5"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g-12">
+                <div class="tn-form-control type-textarea error required">
+                    <div class="__control-label">Text Area label</div>
+
+                    <div class="__control-input-wrapper">
+                        <textarea class="__control-input" [placeholder]="'Placeholder text'" [rows]="5"></textarea>
+                    </div>
+
+                    <div class="__control-messages">
+                        <div class="__message-item">Validation message here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g-12">
+                <div class="tn-form-control type-textarea disabled">
+                    <div class="__control-label">Text Area label</div>
+
+                    <div class="__control-input-wrapper">
+                        <textarea class="__control-input" [placeholder]="'Placeholder text'" [rows]="5"
+                                  disabled></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Dropdown list</h3>
+
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-dropdown">
+                    <div class="__control-label">Dropdown label</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-dropdown class="__control-input tn-dropdown" panelStyleClass="tn-dropdown-panel"
+                                    appendTo="body" [emptyFilterMessage]="'Không tìm thấy kết quả'"
+                                    placeholder="Placeholder" [autoDisplayFirst]="false"
+                                    dropdownIcon="ci ci-chevron-down-1"
+                                    [options]="items"></p-dropdown>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-dropdown error">
+                    <div class="__control-label">Dropdown label</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-dropdown class="__control-input tn-dropdown" panelStyleClass="tn-dropdown-panel"
+                                    appendTo="body" [emptyFilterMessage]="'Không tìm thấy kết quả'"
+                                    placeholder="Placeholder" [autoDisplayFirst]="false"
+                                    dropdownIcon="ci ci-chevron-down-1"
+                                    [options]="items"></p-dropdown>
+                    </div>
+
+                    <div class="__control-messages">
+                        <div class="__message-item">Validation message here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-dropdown disabled">
+                    <div class="__control-label">Dropdown label</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-dropdown class="__control-input tn-dropdown" panelStyleClass="tn-dropdown-panel"
+                                    appendTo="body" [emptyFilterMessage]="'Không tìm thấy kết quả'"
+                                    placeholder="Placeholder" [autoDisplayFirst]="false"
+                                    dropdownIcon="ci ci-chevron-down-1" [disabled]="true"
+                                    [options]="items"></p-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Checkbox</h3>
+
+        <div class="ui-g large-gutter row tn-form-row mb-24">
+            <div class="ui-lg-4">
+                <p-checkbox class="tn-checkbox mb-8" [(ngModel)]="checkbox.caseChecked"
+                            binary="true" label="Checkbox"></p-checkbox>
+
+                <p-checkbox class="tn-checkbox mb-8" [(ngModel)]="checkbox.caseChecked" [disabled]="true"
+                            binary="true" label="Checkbox"></p-checkbox>
+
+                <p-checkbox class="tn-checkbox mb-8" [(ngModel)]="checkbox.caseUncheck" [disabled]="true"
+                            binary="true" label="Disable checkbox"></p-checkbox>
+            </div>
+
+            <div class="ui-lg-4">
+                <p-triStateCheckbox class="tn-checkbox mb-8" [(ngModel)]="triStateCheckbox.caseChecked"
+                                    label="Checkbox">
+                </p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox mb-8" [(ngModel)]="triStateCheckbox.caseIndeterminate"
+                                    label="Indeterminate checkbox"></p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox mb-8" [disabled]="true"
+                                    [(ngModel)]="triStateCheckbox.caseChecked" label="Checkbox"></p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox mb-8" [disabled]="true"
+                                    [(ngModel)]="triStateCheckbox.caseIndeterminate"
+                                    label="Indeterminate checkbox"></p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox mb-8" [(ngModel)]="triStateCheckbox.caseUncheck"
+                                    label="Disable checkbox" [disabled]="true"></p-triStateCheckbox>
+            </div>
+
+            <div class="ui-lg-4">
+                <p-triStateCheckbox class="tn-checkbox primary-theme mb-8" [(ngModel)]="triStateCheckbox.caseChecked"
+                                    label="Checkbox">
+                </p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox primary-theme mb-8"
+                                    [(ngModel)]="triStateCheckbox.caseIndeterminate"
+                                    label="Indeterminate checkbox"></p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox primary-theme mb-8" [disabled]="true"
+                                    [(ngModel)]="triStateCheckbox.caseChecked" label="Checkbox"></p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox primary-theme mb-8" [disabled]="true"
+                                    [(ngModel)]="triStateCheckbox.caseIndeterminate"
+                                    label="Indeterminate checkbox"></p-triStateCheckbox>
+
+                <p-triStateCheckbox class="tn-checkbox primary-theme mb-8" [(ngModel)]="triStateCheckbox.caseUncheck"
+                                    label="Disable checkbox" [disabled]="true"></p-triStateCheckbox>
+            </div>
+        </div>
+
+        <h3>Radio button</h3>
+
+        <div class="ui-g large-gutter row tn-form-row mb-24">
+            <div class="ui-lg-3">
+                <p-radioButton class="tn-radio-button mb-8" name="groupname" label="Option 1"
+                               value="val1" [(ngModel)]="radio.group1"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8" name="groupname" label="Option 2"
+                               value="val2" [(ngModel)]="radio.group1"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8" name="groupname" label="Option 3"
+                               value="val3" [(ngModel)]="radio.group1"></p-radioButton>
+            </div>
+
+            <div class="ui-lg-3">
+                <p-radioButton class="tn-radio-button mb-8 primary-theme" name="groupname2" label="Option 1"
+                               value="val1" [(ngModel)]="radio.group2"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8 primary-theme" name="groupname2" label="Option 2"
+                               value="val2" [(ngModel)]="radio.group2"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8 primary-theme" name="groupname2" label="Option 3"
+                               value="val3" [(ngModel)]="radio.group2"></p-radioButton>
+            </div>
+
+            <div class="ui-lg-3">
+                <p-radioButton class="tn-radio-button mb-8" name="groupname3" label="Option 1"
+                               value="val1" [disabled]="true" [(ngModel)]="radio.group3"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8" name="groupname3" label="Option 2"
+                               value="val2" [disabled]="true" [(ngModel)]="radio.group3"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8" name="groupname3" label="Option 3"
+                               value="val3" [disabled]="true" [(ngModel)]="radio.group3"></p-radioButton>
+            </div>
+
+            <div class="ui-lg-3">
+                <p-radioButton class="tn-radio-button mb-8 primary-theme" name="groupname4" label="Option 1"
+                               value="val1" [disabled]="true" [(ngModel)]="radio.group4"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8 primary-theme" name="groupname4" label="Option 2"
+                               value="val2" [disabled]="true" [(ngModel)]="radio.group4"></p-radioButton>
+
+                <p-radioButton class="tn-radio-button mb-8 primary-theme" name="groupname4" label="Option 3"
+                               value="val3" [disabled]="true" [(ngModel)]="radio.group4"></p-radioButton>
+            </div>
+        </div>
+
+        <h3>Date Picker</h3>
+
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-datepicker">
+                    <div class="__control-label">Date Picker label</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-calendar class="__control-input tn-datepicker" panelStyleClass="tn-datepicker-panel"
+                                    [showIcon]="true" [selectOtherMonths]="true"
+                                    appendTo="body" icon="ci ci-calendar" placeholder="mm/dd/yyy"></p-calendar>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-datepicker required error">
+                    <div class="__control-label">Date Picker label</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-calendar class="__control-input tn-datepicker" panelStyleClass="tn-datepicker-panel"
+                                    [showIcon]="true" [selectOtherMonths]="true"
+                                    appendTo="body" icon="ci ci-calendar" placeholder="mm/dd/yyy"></p-calendar>
+                    </div>
+
+                    <div class="__control-messages">
+                        <div class="__message-item">Validation message here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-lg-4">
+                <div class="tn-form-control type-datepicker disabled">
+                    <div class="__control-label">Date Picker label</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-calendar class="__control-input tn-datepicker" panelStyleClass="tn-datepicker-panel"
+                                    [showIcon]="true" [selectOtherMonths]="true" [disabled]="true"
+                                    appendTo="body" icon="ci ci-calendar" placeholder="mm/dd/yyy"></p-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

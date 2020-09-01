@@ -1,0 +1,70 @@
+// grid
+.ui-g-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+}
+
+.ui-g.row {
+    &, &.small-gutter {
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+
+    &.medium-gutter {
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+
+    &.large-gutter {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+.ui-g, .ui-g.small-gutter {
+    [class^="ui-g-"], [class*=" ui-g-"],
+    [class^="ui-md-"], [class*=" ui-md-"],
+    [class^="ui-lg-"], [class*=" ui-lg-"],
+    [class^="ui-xl-"], [class*=" ui-xl-"] {
+        padding: 0 8px;
+    }
+}
+
+.ui-g.medium-gutter {
+    [class^="ui-g-"], [class*=" ui-g-"],
+    [class^="ui-md-"], [class*=" ui-md-"],
+    [class^="ui-lg-"], [class*=" ui-lg-"],
+    [class^="ui-xl-"], [class*=" ui-xl-"] {
+        padding: 0 12px;
+    }
+}
+
+.ui-g.large-gutter {
+    [class^="ui-g-"], [class*=" ui-g-"],
+    [class^="ui-md-"], [class*=" ui-md-"],
+    [class^="ui-lg-"], [class*=" ui-lg-"],
+    [class^="ui-xl-"], [class*=" ui-xl-"] {
+        padding: 0 16px;
+    }
+}
+
+.ui-g, .ui-g.small-gutter,
+.ui-g.medium-gutter,
+.ui-g.large-gutter {
+    [class^="ui-g-"], [class*=" ui-g-"],
+    [class^="ui-md-"], [class*=" ui-md-"],
+    [class^="ui-lg-"], [class*=" ui-lg-"],
+    [class^="ui-xl-"], [class*=" ui-xl-"] {
+        &.ui-g-nopad {
+            padding: 0;
+        }
+    }
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

@@ -1,0 +1,144 @@
+// Transformation
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+// decorate
+.text-underline,
+.text-hover-underline.activated,
+.text-hover-underline:hover {
+    text-decoration: underline;
+}
+
+.text-line-through {
+    text-decoration: line-through;
+}
+
+// font style
+.fs-inherit {
+    font-style: inherit;
+}
+
+.fs-italic {
+    font-style: italic;
+}
+
+.fs-normal {
+    font-style: normal;
+}
+
+// align
+
+.align-left,
+.text-left {
+    text-align: left;
+}
+
+.align-center,
+.text-center {
+    text-align: center;
+}
+
+.align-right,
+.text-right {
+    text-align: right;
+}
+
+@media only screen and (max-width: 640px) {
+    .align-sm-left,
+    .text-sm-left {
+        text-align: left;
+    }
+
+    .align-sm-center,
+    .text-sm-center {
+        text-align: center;
+    }
+
+    .align-sm-right,
+    .text-sm-right {
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+    .align-md-left,
+    .text-md-left {
+        text-align: left;
+    }
+
+    .align-md-center,
+    .text-md-center {
+        text-align: center;
+    }
+
+    .align-md-right,
+    .text-md-right {
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    .align-lg-left,
+    .text-lg-left {
+        text-align: left;
+    }
+
+    .align-lg-center,
+    .text-lg-center {
+        text-align: center;
+    }
+
+    .align-lg-right,
+    .text-lg-right {
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    .align-xl-left,
+    .text-xl-left {
+        text-align: left;
+    }
+
+    .align-xl-center,
+    .text-xl-center {
+        text-align: center;
+    }
+
+    .align-xl-right,
+    .text-xl-right {
+        text-align: right;
+    }
+}
+
+.prevent-line-break {
+    white-space: nowrap;
+}
+
+.overflow-break-line {
+    word-break: break-all;
+}
+
+.overflow-break-word {
+    word-break: break-word;
+}
+
+// Font Weight
+@each $fw, $value in (inherit: inherit, light: 300, regular: 400, medium: 500, semibold: 600, bold: 700) {
+    .fw-#{$fw} {
+        font-weight: $value;
+    }
+
+    .fw-#{$fw}-i {
+        font-weight: $value !important;
+    }
+}

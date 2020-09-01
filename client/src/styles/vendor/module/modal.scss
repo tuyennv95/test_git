@@ -1,0 +1,181 @@
+.tn-modal {
+    &.force-full-width {
+        .ui-dialog, &.ui-dialog {
+            width: 100% !important;
+        }
+    }
+
+    .ui-dialog-maximized {
+        max-width: 100% !important;
+    }
+
+    .ui-dialog {
+        background-color: #ffffff;
+        border-radius: 0;
+
+        .ui-dialog-content {
+            border: none;
+            padding: 0;
+        }
+
+        .ui-dialog-footer {
+            border: none;
+            border-top: 1px solid $carbon--gray-20;
+        }
+    }
+
+    .ui-dialog .ui-dialog-titlebar {
+        border: none;
+        border-bottom: 1px solid $carbon--gray-20;
+        padding: 15px 32px 16px;
+        font-weight: normal;
+        background-color: #fff;
+
+        .ui-dialog-title {
+            line-height: 32px;
+            font-size: 20px;
+            font-weight: 500;
+            color: $carbon--gray-90;
+        }
+
+        .ui-dialog-titlebar-icon {
+            font-size: 18px;
+            height: 32px;
+            width: 32px;
+            position: absolute;
+            top: 0;
+            background-color: $carbon--gray-10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $tn-color--text-common;
+
+            &.ui-dialog-titlebar-close {
+                right: 0px;
+            }
+
+            &.ui-dialog-titlebar-maximize {
+                right: 30px;
+                border-radius: 0;
+            }
+
+            &:hover {
+                background-color: $carbon--hover-ui;
+            }
+        }
+    }
+
+    // footer
+
+    .ui-dialog .ui-dialog-footer {
+        padding: 24px 32px 16px 32px;
+    }
+
+    .tn-modal-footer-content {
+        .__left-content {
+            text-align: left;
+        }
+
+        .tn-btn {
+            margin-bottom: 8px;
+        }
+
+        .__left-content .tn-btn {
+            margin-right: 8px;
+        }
+
+        .__right-content .tn-btn {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+    }
+}
+
+.tn-modal-content-panel {
+    padding-left: 32px;
+    padding-right: 32px;
+
+    &.tn-form-container {
+        padding-top: 24px;
+        padding-bottom: 8px;
+    }
+}
+
+// tab
+
+.tn-modal.modal-with-tabs {
+    .ui-dialog-content {
+        overflow: hidden;
+    }
+}
+
+.tn-modal-tabs {
+    display: block;
+    height: 100%;
+
+    .ui-tabview {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ui-tabview .ui-tabview-panels {
+        padding: 0;
+        border: none;
+        flex: 1 1;
+        overflow: hidden;
+    }
+
+    .ui-tabview.ui-tabview-top .ui-tabview-nav {
+        background: $carbon--selected-ui;
+        height: 40px;
+        padding: 0 40px;
+        border-radius: 0;
+    }
+
+    .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-default {
+        background: none;
+        border-color: $carbon--selected-ui;
+        border-bottom: 2px solid $carbon--selected-ui;
+
+        a {
+            color: $carbon--gray-70;
+            font-weight: normal;
+            margin-bottom: 1px;
+        }
+
+        &:hover:not(.ui-state-active), &:focus:not(.ui-state-active) {
+            border-bottom: 2px solid $carbon--gray-60;
+            background: none;
+            outline: none;
+        }
+
+        &.ui-state-active {
+            border-color: $carbon--selected-ui;
+            background: none;
+            border-bottom: 2px solid $carbon--blue-90;
+
+            a {
+                color: $carbon--gray-100;
+                font-weight: 600;
+            }
+
+            &:hover, &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    p-tabpanel, .ui-tabview-panel {
+        display: block;
+        height: 100%;
+    }
+}
+
+.tn-modal-tab-panel-content {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+

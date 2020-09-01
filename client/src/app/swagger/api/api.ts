@@ -1,0 +1,15 @@
+export * from './departmentController.service';
+import { DepartmentControllerService } from './departmentController.service';
+export * from './lecturerController.service';
+import { LecturerControllerService } from './lecturerController.service';
+export * from './lecturerSubjectController.service';
+import { LecturerSubjectControllerService } from './lecturerSubjectController.service';
+export * from './rangeController.service';
+import { RangeControllerService } from './rangeController.service';
+export * from './studentController.service';
+import { StudentControllerService } from './studentController.service';
+export * from './subjectController.service';
+import { SubjectControllerService } from './subjectController.service';
+export * from './userController.service';
+import { UserControllerService } from './userController.service';
+export const APIS = [DepartmentControllerService, LecturerControllerService, LecturerSubjectControllerService, RangeControllerService, StudentControllerService, SubjectControllerService, UserControllerService];

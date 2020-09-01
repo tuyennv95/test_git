@@ -1,0 +1,167 @@
+<ng-template [ngIf]="!documentDetail">
+    Tài liệu không tồn tại
+</ng-template>
+
+<div class="tn-post tn-page-content-area" *ngIf="documentDetail">
+    <div class="tn-page-content-header-area" style="overflow: auto;">
+        <div class="__page-title-area">
+            <h1 class="tn-page-title">
+                {{documentDetail.documentName}}
+            </h1>
+        </div>
+        <div class="__post-content" style="height: 92px;">
+            <p>
+                {{documentDetail.description}}
+            </p>
+            <div class="ui-g large-gutter row tn-form-row">
+                <div class="ui-g-12 ui-lg-6">
+                <span class="mr-8">
+                    <span class="__icon ci ci-view"></span> {{documentDetail.viewsCount}}
+               </span>
+                    <span class="mr-8">
+                    <span class="__icon ci ci-thumbs-up"></span> {{getLikes()}}
+               </span>
+                    <span class="mr-8">
+                    <span class="__icon ci ci-download"></span> {{documentDetail.downloadsCount}}
+               </span>
+                    <span class="mr-8">
+                     <span class="__icon ci ci-star"></span> {{getTotalStar()}}/5
+               </span>
+                </div>
+
+                <div class="ui-g-12 ui-lg-6 thao_tac" *ngIf="+userLogin.role === 3 && studentReview">
+                    <button type="button" (click)="onLike()"
+                            class="tn-btn icon-only __record-action-btn mr-12 like"
+                            [class.actived]="studentReview.like">
+                        <span class="__icon ci ci-thumbs-up"></span>
+                    </button>
+
+                    <button type="button" (click)="onFavourite()"
+                            class="tn-btn icon-only __record-action-btn mr-12 favorite"
+                            [class.actived]="studentReview.favourite">
+                        <span class="__icon ci ci-favorite"></span>
+                    </button>
+
+                    <span *ngIf="studentReview.starVote > 0">{{studentReview.starVote}}</span>
+                    <button type="button" (click)="startVote.toggle($event)"
+                            class="tn-btn icon-only __record-action-btn star-vote"
+                            [class.actived]="studentReview.starVote > 0">
+                        <span class="__icon ci ci-star"></span>
+                    </button>
+
+                    <p-overlayPanel #startVote [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+                                    appendTo="body"
+                                    styleClass="tn-overlay-panel style-1">
+                        <div class="__item" (click)="onVoteStar(0)">Bỏ chọn</div>
+                        <div class="__item" (click)="onVoteStar(1)">1</div>
+                        <div class="__item" (click)="onVoteStar(1.5)">1.5</div>
+                        <div class="__item" (click)="onVoteStar(2)">2</div>
+                        <div class="__item" (click)="onVoteStar(2.5)">2.5</div>
+                        <div class="__item" (click)="onVoteStar(3)">3</div>
+                        <div class="__item" (click)="onVoteStar(3.5)">3.5</div>
+                        <div class="__item" (click)="onVoteStar(4)">4</div>
+                        <div class="__item" (click)="onVoteStar(4.5)">4.5</div>
+                        <div class="__item" (click)="onVoteStar(5)">5</div>
+                    </p-overlayPanel>
+                </div>
+            </div>
+        </div>
+
+        <div class="__post-content">
+            <ul *ngIf="files.length">
+                <li *ngFor="let item of files">
+                    <div class="ui-fileupload-row ng-star-inserted">
+                        <!--                        <div>-->
+                        <!--                            <img [src]=""-->
+                        <!--                                 width="50" class="ng-star-inserted">-->
+                        <!--                        </div>-->
+                        <div>
+                            <a href="http://localhost:9999/api/file-manager/download/{{item.id}}"
+                               (click)="onDownload()">{{getFileName(item.file)}}</a>
+                        </div>
+                        <div>
+                            <button type="button" (click)="xemTruocFileComponent.showPopup(item)"
+                                    class="tn-btn icon-only __record-action-btn mr-4">
+                                <span class="__icon ci ci-view"></span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <ng-container *ngFor="let item of commentArr">
+            <div class="__post-comment">
+                <div class="tn-post-comment clearfix">
+                    <div class="__avatar">
+                        <img alt="avatar" class="img-responsive"
+                             src="data:image/jpeg;base64,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">
+                    </div>
+                    <div class="__content-wrapper">
+                        <div class="__name">
+                            <b>{{item.nguoi_dang}}</b>
+                            <span style=" border-color: #ddd;">
+                        said:<span style="font-style: italic">- {{item.time_dang}}</span>
+                    </span>
+                        </div>
+                        <div class="__right">
+                            <!--                            <button type="button"-->
+                            <!--                                    class="tn-btn icon-only __record-action-btn mr-4">-->
+                            <!--                                <span class="__icon ci ci-reply"></span>-->
+                            <!--                            </button>-->
+                            <button type="button" *ngIf="+userLogin.role === 1" (click)="removeComment(item)"
+                                    class="tn-btn icon-only __record-action-btn mr-12">
+                                <span class="__icon ci ci-close"></span>
+                            </button>
+                        </div>
+                        <div class="__content">
+                            {{item.noi_dung}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--            <ng-template [ngIf]="item.rep_comment">-->
+            <!--                <div class="__post-comment rep-comment" *ngFor="let repItem of item?.rep_comment">-->
+            <!--                    <div class="tn-post-comment clearfix">-->
+            <!--                        <div class="__avatar">-->
+            <!--                            <img alt="avatar" class="img-responsive"-->
+            <!--                                 src="https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/3/39/AoU_Iron_Man_Mk43_art.png/revision/latest?cb=20150310052243">-->
+            <!--                        </div>-->
+            <!--                        <div class="__content-wrapper">-->
+            <!--                            <div class="__name">-->
+            <!--                                <b>{{repItem.nguoi_dang}}</b>-->
+            <!--                                <span style=" border-color: #ddd;">-->
+            <!--                                    said:<span style="font-style: italic">- {{repItem.time_dang}}</span>-->
+            <!--                                </span>-->
+            <!--                            </div>-->
+            <!--                            <div class="__right">-->
+            <!--                                <button type="button"-->
+            <!--                                        class="tn-btn icon-only __record-action-btn mr-12">-->
+            <!--                                    <span class="__icon ci ci-close"></span>-->
+            <!--                                </button>-->
+            <!--                            </div>-->
+            <!--                            <div class="__content">-->
+            <!--                                {{repItem.noi_dung}}-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </ng-template>-->
+        </ng-container>
+
+        <div class="tn-submit-comment tn-form-container">
+            <div class="tn-form-control style-2 ui-g">
+                <div class="__form-control-inputs ui-md-12">
+                    <input placeholder="Viết bình luận..." type="text" [(ngModel)]="textComment">
+                    <button class="tn-btn tn-unlock-bgc tn-light-color tn-validate-hover-bgc no-border easing"
+                            type="button" (click)="onComment()" [disabled]="!textComment">
+                        Gửi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<modal-xem-truoc-file></modal-xem-truoc-file>

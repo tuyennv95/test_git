@@ -1,0 +1,81 @@
+<p-dialog #dialog [header]="title" class="tn-modal" [(visible)]="isShow"
+          [modal]="true" [responsive]="true" [styleClass]="'tn-modal force-full-width'"
+          [style]="{'max-width': '1300px'}" [minHeight]="400"
+          closeIcon="ci ci-close" maximizeIcon="ci ci-maximize" minimizeIcon="ci ci-minimize"
+          [maximizable]="true" [contentStyle]="{'max-height': getMaxDialogHeight()}" [autoZIndex]="true">
+    <div class="tn-modal-content-panel tn-form-container">
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-g-12 ui-lg-6">
+                <div class="tn-form-control type-text-field required"
+                     [class.error]="checkSave && !itemDetail.rangeName">
+                    <div class="__control-label">Tên Chuyên ngành</div>
+
+                    <div class="__control-input-wrapper">
+                        <input class="__control-input" type="text" placeholder="Nhập tên chuyên ngành"
+                               [(ngModel)]="itemDetail.rangeName">
+                    </div>
+
+                    <div class="__control-messages" *ngIf="checkSave && !itemDetail.rangeName">
+                        <div class="__message-item">Trường thông tin bắt buộc</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-lg-6">
+                <div class="tn-form-control type-dropdown required"
+                     [class.error]="checkSave && !itemDetail.departmentId">
+                    <div class="__control-label">Bộ môn</div>
+
+                    <div class="__control-input-wrapper">
+                        <p-dropdown class="__control-input tn-dropdown" panelStyleClass="tn-dropdown-panel"
+                                    appendTo="body" [emptyFilterMessage]="'Không tìm thấy kết quả'"
+                                    placeholder="Placeholder" [autoDisplayFirst]="false"
+                                    dropdownIcon="ci ci-chevron-down-1"
+                                    [(ngModel)]="itemDetail.departmentId"
+                                    [options]="department_options"></p-dropdown>
+                    </div>
+
+                    <div class="__control-messages" *ngIf="checkSave && !itemDetail.departmentId">
+                        <div class="__message-item">Validation message here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-g large-gutter row tn-form-row">
+            <div class="ui-g-12">
+                <div class="tn-form-control type-textarea">
+                    <div class="__control-label">Mô tả</div>
+
+                    <div class="__control-input-wrapper">
+                        <textarea class="__control-input" [placeholder]="'Nội dung Mô tả'" [rows]="5"
+                                  [(ngModel)]="itemDetail.description"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p-footer>
+        <div class="ui-g large-gutter row tn-modal-footer-content">
+            <div class="ui-g-8 __left-content">
+
+                <button type="button" *ngIf="itemDetail.id" (click)="onDelete(itemDetail.id)"
+                        class="tn-btn tn-bgc--transparent tn-bgc--gray-20--hover tn-bgc--gray-30--active easing-fast
+                        focus-style-1 tn-icon-color--red-60">
+                    <span class="__label">{{'Xóa dữ liệu'}}</span>
+                    <span class="__icon ci ci-delete"></span>
+                </button>
+            </div>
+
+            <div class="ui-g-4 __right-content">
+                <button type="button" (click)="onSave()"
+                        class="tn-btn tn-color--white-0 tn-bgc--primary tn-bgc--primary-alt--hover
+                        tn-bgc--primary-alt-2--active easing-fast">
+                    <span class="__label">{{'Lưu dữ liệu'}}</span>
+                    <span class="__icon ci ci-save"></span>
+                </button>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>

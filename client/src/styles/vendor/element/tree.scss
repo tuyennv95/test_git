@@ -1,0 +1,154 @@
+.tn-data-tree {
+    // icon
+
+    .pi {
+        font-family: "carbon" !important;
+    }
+
+    .pi-caret-right:before {
+        content: "\e038";
+    }
+
+    .pi-caret-down:before {
+        content: "\e031";
+    }
+
+    .pi-minus:before {
+        content: "";
+        position: absolute;
+        display: block;
+        font-weight: bold;
+        width: 8px;
+        border-bottom: 2px solid;
+        left: 3px;
+        top: 6px;
+    }
+
+    .pi-check:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 9px;
+        height: 5px;
+        left: 3px;
+        top: 3px;
+        border-left: 2px solid;
+        border-bottom: 2px solid;
+        transform: rotate(-45deg);
+    }
+
+    // general
+
+    .ui-tree {
+        color: inherit;
+        border: 0;
+        padding: 0;
+    }
+
+    .ui-tree .ui-tree-container {
+        padding: 0;
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode {
+        padding: 0;
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content {
+        border: 0;
+        outline: none;
+    }
+
+    .ui-treenode-content {
+        display: flex;
+        align-items: center;
+        @include easing-animation(background-color);
+
+        &:hover {
+            background-color: $carbon--gray-10;
+        }
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-treenode-icon {
+        color: $tn-color--primary;
+        font-size: 20px;
+        margin-right: 8px;
+    }
+
+    // toggle
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        margin-right: 0;
+    }
+
+    // checkbox
+
+    .ui-chkbox {
+        height: 16px;
+        width: 16px;
+        min-width: 16px;
+    }
+
+    .ui-chkbox .ui-chkbox-box {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .ui-chkbox-icon {
+        display: block;
+        line-height: 14px;
+        width: 100%;
+        height: 100%;
+        color: $tn-color--text-1;
+        border: 1px solid $tn-color--text-1;
+    }
+
+    .ui-chkbox-icon.pi-check {
+        background-color: $tn-color--primary;
+        color: #fff;
+        border-color: $tn-color--primary;
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-chkbox {
+        margin-right: 8px;
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-chkbox .ui-chkbox-icon {
+        margin: 0;
+    }
+
+    // label
+
+    .ui-treenode-label {
+        color: $tn-color--text-3;
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-treenode-label {
+        padding: 4px 0;
+    }
+
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-treenode-label.ui-state-highlight,
+    .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content.ui-treenode-selectable .ui-treenode-label:not(.ui-state-highlight):hover {
+        background-color: transparent;
+        color: $tn-color--text-3;
+    }
+
+    .ui-tree-container > p-treenode > li > .ui-treenode-content > .ui-treenode-label {
+        font-weight: 700;
+    }
+
+    // for single selection mode
+
+    &[selectionmode="single"] {
+        .ui-treenode-content.ui-treenode-content-selected {
+            background-color: $carbon--hover-ui;
+        }
+    }
+}
